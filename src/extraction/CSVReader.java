@@ -19,6 +19,7 @@ public class CSVReader {
 			bugs.add(new BugReport(attr));
 		}
 
+		br.close();
 		return bugs;
 	}
 }
