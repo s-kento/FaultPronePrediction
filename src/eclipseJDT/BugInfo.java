@@ -4,6 +4,12 @@ public class BugInfo {
 	private String className;
 	private Integer[] metrics = new Integer[17];
 	private boolean fault;
+
+	public BugInfo(String className, Integer[] metrics){
+		setClassName(className);
+		setMetrics(metrics);
+	}
+
 	public String getClassName() {
 		return className;
 	}

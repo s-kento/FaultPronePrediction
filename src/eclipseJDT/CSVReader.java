@@ -8,18 +8,29 @@ import java.util.List;
 
 
 public class CSVReader {
-	static String csvFilePath = "D:\\fault-prone予測\\eclipse\\eclipse\\single-version-ck-oo.csv";
+	String csvFilePath = "D:\\fault-prone予測\\eclipse\\eclipse\\single-version-ck-oo.csv";
+	List<BugInfo> bugs = new ArrayList<BugInfo>();
 
-	public void readCSV() throws IOException{
-		List<BugInfo> bugs = new ArrayList<BugInfo>();
+	public List<BugInfo> readCSV() throws IOException{
 		FileReader fr = new FileReader(csvFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();
+		line=br.readLine(); //1行目は無視
 		while((line=br.readLine())!=null){
-			String[] attr = line.split(";",0);
-
+			String[] info = line.split(";",0);
+			BugInfo bug = new BugInfo(info[0],extractMetrics(info));
+			bugs.add(bug);
 		}
 
 		br.close();
+		return bugs;
+	}
+
+	public Integer[] extractMetrics(String[] info){
+		Integer[] metrics= new Integer[17];
+		for(int i=0;i<17;i++){
+			metrics[i]=Integer.parseInt(info[i+1]);
+		}
+		return metrics;
 	}
 }
