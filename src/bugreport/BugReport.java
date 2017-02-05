@@ -1,4 +1,4 @@
-package extraction;
+package bugreport;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
