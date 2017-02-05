@@ -2,7 +2,7 @@ package eclipseJDT;
 
 public class BugInfo {
 	private String className;
-	private Integer[] metrics = new Integer[17];
+	private Integer[] metrics = new Integer[18];
 	private boolean fault;
 
 	public BugInfo(String className, Integer[] metrics){

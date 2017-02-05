@@ -15,7 +15,6 @@ public class CSVReader {
 		FileReader fr = new FileReader(csvFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();
-		line=br.readLine(); //1行目は無視
 		while((line=br.readLine())!=null){
 			String[] info = line.split(";",0);
 			BugInfo bug = new BugInfo(info[0],extractMetrics(info));
@@ -27,9 +26,9 @@ public class CSVReader {
 	}
 
 	public Integer[] extractMetrics(String[] info){
-		Integer[] metrics= new Integer[17];
-		for(int i=0;i<17;i++){
-			metrics[i]=Integer.parseInt(info[i+1]);
+		Integer[] metrics= new Integer[18];
+		for(int i=0;i<18;i++){
+			metrics[i]=(int)Double.parseDouble(info[i+1]);
 		}
 		return metrics;
 	}
