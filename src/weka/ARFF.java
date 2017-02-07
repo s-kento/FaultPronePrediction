@@ -14,8 +14,8 @@ public class ARFF {
 	public void makeBugARFF(List<BugInfo> bugs) throws IOException {
 		PrintWriter pw = makeARFF();
 		for (BugInfo bug : bugs) {
-			for (int value : bug.getMetrics()) {
-				pw.print(value + ",");
+			for (int i=0;i<17;i++) {
+				pw.print(bug.getMetrics()[i] + ",");
 			}
 			if (bug.isFaulty())
 				pw.println("TRUE");
@@ -43,13 +43,11 @@ public class ARFF {
 		pw.println("@attribute FANOUT   numeric");
 		pw.println("@attribute LCOM numeric");
 		pw.println("@attribute NOC numeric");
-		pw.println("@attribute LCOM numeric");
 		pw.println("@attribute NOA numeric");
 		pw.println("@attribute NOAI numeric");
 		pw.println("@attribute LOC numeric");
 		pw.println("@attribute NOM numeric");
 		pw.println("@attribute NOMI numeric");
-		pw.println("@attribute LCOM numeric");
 		pw.println("@attribute NOPRA numeric");
 		pw.println("@attribute NOPRM numeric");
 		pw.println("@attribute NOPA numeric");
