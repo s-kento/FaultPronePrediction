@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 public class BugInfo {
 	private String className;
 	private Integer[] metrics = new Integer[18];
-	private boolean fault;
 
 	public BugInfo(String className, Integer[] metrics) {
 		setClassName(className);
@@ -30,7 +29,10 @@ public class BugInfo {
 	}
 
 	public boolean isFaulty() {
-		return fault;
+		if(getMetrics()[17]!=0)
+			return true;
+		else
+			return false;
 	}
 
 	public String replace(String str) {
