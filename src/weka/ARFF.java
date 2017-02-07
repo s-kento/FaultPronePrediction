@@ -115,13 +115,13 @@ public class ARFF {
 		return pw;
 	}
 
-	public CloneInfo searchClone(BugInfo bug, List<CloneInfo> clones){
+	public CloneInfo searchClone(BugInfo bug, List<CloneInfo> clones) throws IOException{
 		for(CloneInfo clone:clones){
 			if(clone.getClassName().equals(bug.getClassName())){
 				return clone;
 			}
 		}
-
-		return null;
+		CloneInfo clone=new CloneInfo();
+		return clone;
 	}
 }

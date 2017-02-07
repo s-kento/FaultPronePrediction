@@ -17,7 +17,7 @@ public class BugInfo {
 	}
 
 	public void setClassName(String className) {
-		this.className = replace(className);
+		this.className = replace(CloneInfo.replace(className));
 	}
 
 	public Integer[] getMetrics() {

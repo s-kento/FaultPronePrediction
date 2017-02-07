@@ -22,6 +22,11 @@ public class CloneInfo {
 		setMetrics(metrics);
 	}
 
+	public CloneInfo() throws IOException{
+		Double[] metrics={0.0,0.0,0.0,0.0,0.0};
+		setMetrics(metrics);
+	}
+
 	public String getClassName() {
 		return className;
 	}
@@ -52,7 +57,7 @@ public class CloneInfo {
 	}
 
 	//余分なダブルクオーテーションを削除
-	public String replace(String str) {
+	public static String replace(String str) {
 		String regex = "\"";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(str);
