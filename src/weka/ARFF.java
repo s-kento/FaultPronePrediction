@@ -11,10 +11,10 @@ import eclipseJDT.BugInfo;
 import eclipseJDT.CloneInfo;
 
 public class ARFF {
-	public void makeBugARFF(List<BugInfo> bugs) throws IOException {
-		PrintWriter pw = makeARFF();
+	public void makeBugARFF(List<BugInfo> bugs, String output) throws IOException {
+		PrintWriter pw = makeARFF(output);
 		for (BugInfo bug : bugs) {
-			for (int i=0;i<17;i++) {
+			for (int i = 0; i < 17; i++) {
 				pw.print(bug.getMetrics()[i] + ",");
 			}
 			if (bug.isFaulty())
@@ -25,26 +25,28 @@ public class ARFF {
 		pw.close();
 	}
 
-	public void makeCloneARFF(List<BugInfo> bugs, List<CloneInfo> clones) throws IOException {
-		PrintWriter pw = makeARFFwithClone();
+	public void makeCloneARFF(List<BugInfo> bugs, List<CloneInfo> clones, String output) throws IOException {
+		PrintWriter pw = makeARFFwithClone(output);
 		for (BugInfo bug : bugs) {
-			for (int i=0;i<17;i++) {
-				pw.print(bug.getMetrics()[i] + ",");
+			CloneInfo clone = searchClone(bug, clones);
+			if (clone.getClassName() != null) {
+				for (int i = 0; i < 17; i++) {
+					pw.print(bug.getMetrics()[i] + ",");
+				}
+				for (Double value : clone.getMetrics()) {
+					pw.print(value + ",");
+				}
+				if (bug.isFaulty())
+					pw.println("TRUE");
+				else
+					pw.println("FALSE");
 			}
-			CloneInfo clone=searchClone(bug, clones);
-			for(Double value:clone.getMetrics()){
-				pw.print(value + ",");
-			}
-			if (bug.isFaulty())
-				pw.println("TRUE");
-			else
-				pw.println("FALSE");
 		}
 		pw.close();
 	}
 
-	public PrintWriter makeARFF() throws IOException {
-		File fileout = new File("result.arff");
+	public PrintWriter makeARFF(String output) throws IOException {
+		File fileout = new File(output);
 		FileWriter filewriter = new FileWriter(fileout);
 		BufferedWriter bw = new BufferedWriter(filewriter);
 		PrintWriter pw = new PrintWriter(bw);
@@ -76,8 +78,8 @@ public class ARFF {
 		return pw;
 	}
 
-	public PrintWriter makeARFFwithClone() throws IOException {
-		File fileout = new File("result2.arff");
+	public PrintWriter makeARFFwithClone(String output) throws IOException {
+		File fileout = new File(output);
 		FileWriter filewriter = new FileWriter(fileout);
 		BufferedWriter bw = new BufferedWriter(filewriter);
 		PrintWriter pw = new PrintWriter(bw);
@@ -115,13 +117,14 @@ public class ARFF {
 		return pw;
 	}
 
-	public CloneInfo searchClone(BugInfo bug, List<CloneInfo> clones) throws IOException{
-		for(CloneInfo clone:clones){
-			if(clone.getClassName().equals(bug.getClassName())){
+	public CloneInfo searchClone(BugInfo bug, List<CloneInfo> clones) throws IOException {
+		for (CloneInfo clone : clones) {
+			if ((clone.getClassName()).equals(bug.getClassName())) {
 				return clone;
 			}
 		}
-		CloneInfo clone=new CloneInfo();
+		System.out.println(bug.getClassName());
+		CloneInfo clone = new CloneInfo();
 		return clone;
 	}
 }

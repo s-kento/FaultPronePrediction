@@ -40,6 +40,6 @@ public class BugInfo {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(str);
 		String result = m.replaceAll(".");
-		return result;
+		return result.trim();
 	}
 }

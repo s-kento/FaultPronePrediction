@@ -17,6 +17,6 @@ public class MyVisitor extends ASTVisitor {
 	@Override
 	public boolean visit(TypeDeclaration node){
 		className=node.getName().toString();
-		return true;
+		return false;
 	}
 }

@@ -11,7 +11,9 @@ public class Main {
 		List<BugInfo> bugs = reader.readBugCSV();
 		List<CloneInfo> clones = reader.readCloneCSV();
 		ARFF arff = new ARFF();
-		//arff.makeBugARFF(bugs);
-		arff.makeCloneARFF(bugs, clones);
+		if (Integer.parseInt(args[1]) == 0)
+			arff.makeBugARFF(bugs, args[0]);
+		if (Integer.parseInt(args[1]) == 1)
+			arff.makeCloneARFF(bugs, clones, args[0]);
 	}
 }

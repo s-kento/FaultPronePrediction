@@ -8,8 +8,8 @@ import java.util.List;
 
 
 public class CSVReader {
-	String csvBugFilePath = "D:\\fault-prone予測\\eclipse\\eclipse\\single-version-ck-oo.csv";
-	String csvCloneFilePath="result\\eclipseJDT.csv";
+	String csvBugFilePath = "D:\\fault-prone予測用データセット\\eclipse\\eclipse\\single-version-ck-oo.csv";
+	String csvCloneFilePath="input\\eclipseJDT_s.csv";
 	private List<BugInfo> bugs = new ArrayList<BugInfo>();
 	private List<CloneInfo> clones = new ArrayList<CloneInfo>();
 
