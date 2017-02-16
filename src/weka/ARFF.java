@@ -29,7 +29,7 @@ public class ARFF {
 		PrintWriter pw = makeARFFwithClone(output);
 		for (BugInfo bug : bugs) {
 			CloneInfo clone = searchClone(bug, clones);
-			if (clone.getClassName() != null) {
+			if (clone.getClassName() != null) {//searchCloneの結果がnullでないならば，ARFFに書き出す
 				for (int i = 0; i < 17; i++) {
 					pw.print(bug.getMetrics()[i] + ",");
 				}
@@ -123,7 +123,7 @@ public class ARFF {
 				return clone;
 			}
 		}
-		System.out.println(bug.getClassName());
+		System.out.println(bug.getClassName());//見つからなかったファイル(バグ情報csvには書いてるけど，実際のソースコードが見つからない)を出力
 		CloneInfo clone = new CloneInfo();
 		return clone;
 	}

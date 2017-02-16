@@ -47,6 +47,7 @@ public class CloneInfo {
 	}
 
 	public CompilationUnit getAST(String filePath) throws IOException {
+		System.out.println(filePath);
 		String source = Files.lines(Paths.get(filePath), Charset.forName("UTF-8"))
 				.collect(Collectors.joining(System.getProperty("line.separator")));
 		ASTParser parser = ASTParser.newParser(AST.JLS4);

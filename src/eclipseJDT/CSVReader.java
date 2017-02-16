@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CSVReader {
 	String csvBugFilePath = "D:\\fault-prone予測用データセット\\eclipse\\eclipse\\single-version-ck-oo.csv";
-	String csvCloneFilePath="input\\eclipseJDT_s.csv";
+	//String csvCloneFilePath="input\\specificClone_60_kai.csv";
 	private List<BugInfo> bugs = new ArrayList<BugInfo>();
 	private List<CloneInfo> clones = new ArrayList<CloneInfo>();
 
@@ -35,7 +35,7 @@ public class CSVReader {
 		return metrics;
 	}
 
-	public List<CloneInfo> readCloneCSV() throws IOException{
+	public List<CloneInfo> readCloneCSV(String csvCloneFilePath) throws IOException{
 		FileReader fr = new FileReader(csvCloneFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();
