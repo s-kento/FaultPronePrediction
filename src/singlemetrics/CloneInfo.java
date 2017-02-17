@@ -1,4 +1,4 @@
-package eclipseJDT;
+package singlemetrics;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package eclipseJDT;
+package singlemetrics;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.PackageDeclaration;
