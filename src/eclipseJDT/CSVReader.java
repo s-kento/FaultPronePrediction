@@ -1,4 +1,4 @@
-package singlemetrics;
+package eclipseJDT;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

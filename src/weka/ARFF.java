@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import singlemetrics.BugInfo;
-import singlemetrics.CloneInfo;
+import eclipseJDT.BugInfo;
+import eclipseJDT.CloneInfo;
 
 public class ARFF {
 	public void makeBugARFF(List<BugInfo> bugs, String output) throws IOException {
