@@ -127,4 +127,5 @@ public class ARFF {
 		CloneInfo clone = new CloneInfo();
 		return clone;
 	}
+
 }

@@ -35,7 +35,7 @@ public class SCMInfo {
 			return false;
 	}
 
-	public String replace(String str) {
+	public static String replace(String str) {
 		String regex = "::";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(str);

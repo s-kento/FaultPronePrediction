@@ -13,9 +13,12 @@ public class Main {
 		if (Integer.parseInt(args[2]) == 0) {
 			arff.makeSCMARFF(bugs, args[1]);
 		}
-		if (Integer.parseInt(args[2]) == 1){
+		else if (Integer.parseInt(args[2]) == 1){
 			List<CloneInfo> clones = reader.readCloneCSV(args[0]);
 			arff.makeCloneARFF(bugs, clones, args[1]);
+		}
+		else if(Integer.parseInt(args[2]) == 2){
+			//TODO
 		}
 	}
 }
