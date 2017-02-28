@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import singlemetrics.BugInfo;
+import singlemetrics.SCMInfo;
 import singlemetrics.CloneInfo;
 
 public class ARFF {
-	public void makeBugARFF(List<BugInfo> bugs, String output) throws IOException {
+	public void makeSCMARFF(List<SCMInfo> bugs, String output) throws IOException {
 		PrintWriter pw = makeARFF(output);
-		for (BugInfo bug : bugs) {
+		for (SCMInfo bug : bugs) {
 			for (int i = 0; i < 17; i++) {
 				pw.print(bug.getMetrics()[i] + ",");
 			}
@@ -25,9 +25,9 @@ public class ARFF {
 		pw.close();
 	}
 
-	public void makeCloneARFF(List<BugInfo> bugs, List<CloneInfo> clones, String output) throws IOException {
+	public void makeCloneARFF(List<SCMInfo> bugs, List<CloneInfo> clones, String output) throws IOException {
 		PrintWriter pw = makeARFFwithClone(output);
-		for (BugInfo bug : bugs) {
+		for (SCMInfo bug : bugs) {
 			CloneInfo clone = searchClone(bug, clones);
 			if (clone.getClassName() != null) {//searchCloneの結果がnullでないならば，ARFFに書き出す
 				for (int i = 0; i < 17; i++) {
@@ -117,7 +117,7 @@ public class ARFF {
 		return pw;
 	}
 
-	public CloneInfo searchClone(BugInfo bug, List<CloneInfo> clones) throws IOException {
+	public CloneInfo searchClone(SCMInfo bug, List<CloneInfo> clones) throws IOException {
 		for (CloneInfo clone : clones) {
 			if ((clone.getClassName()).equals(bug.getClassName())) {
 				return clone;

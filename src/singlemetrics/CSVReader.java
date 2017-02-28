@@ -8,18 +8,18 @@ import java.util.List;
 
 
 public class CSVReader {
-	String csvBugFilePath = "D:\\fault-prone予測用データセット\\eclipse\\eclipse\\single-version-ck-oo.csv";
+	String csvBugFilePath = "D:\\fault-prone予測用データセット\\lucene\\lucene\\single-version-ck-oo.csv";
 	//String csvCloneFilePath="input\\specificClone_60_kai.csv";
-	private List<BugInfo> bugs = new ArrayList<BugInfo>();
+	private List<SCMInfo> bugs = new ArrayList<SCMInfo>();
 	private List<CloneInfo> clones = new ArrayList<CloneInfo>();
 
-	public List<BugInfo> readBugCSV() throws IOException{
+	public List<SCMInfo> readSCMCSV() throws IOException{
 		FileReader fr = new FileReader(csvBugFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();
 		while((line=br.readLine())!=null){
 			String[] info = line.split(";",0);
-			BugInfo bug = new BugInfo(info[0],extractCKMetrics(info));
+			SCMInfo bug = new SCMInfo(info[0],extractCKMetrics(info));
 			bugs.add(bug);
 		}
 
@@ -56,4 +56,5 @@ public class CSVReader {
 		}
 		return metrics;
 	}
+
 }

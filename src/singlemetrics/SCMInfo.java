@@ -3,11 +3,11 @@ package singlemetrics;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BugInfo {
+public class SCMInfo {
 	private String className;
 	private Integer[] metrics = new Integer[18];
 
-	public BugInfo(String className, Integer[] metrics) {
+	public SCMInfo(String className, Integer[] metrics) {
 		setClassName(className);
 		setMetrics(metrics);
 	}
