@@ -6,16 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.cli.CommandLine;
+
 
 public class CSVReader {
-	String csvSCMFilePath = "D:\\fault-prone予測用データセット\\lucene\\lucene\\single-version-ck-oo.csv";
-	//String csvCloneFilePath="input\\specificClone_60_kai.csv";
 	String csvPastBugFilePath = "D:\\fault-prone予測用データセット\\lucene\\lucene\\bug-metrics.csv";
 	private List<SCMInfo> bugs = new ArrayList<SCMInfo>();
 	private List<CloneInfo> clones = new ArrayList<CloneInfo>();
 	private List<PastBugInfo> pastBugs = new ArrayList<PastBugInfo>();
 
-	public List<SCMInfo> readSCMCSV() throws IOException{
+	public List<SCMInfo> readSCMCSV(CommandLine cl) throws IOException{
+		String csvSCMFilePath = "D:\\fault-prone予測用データセット\\"+cl.getOptionValue("p")+"\\"+cl.getOptionValue("p")+"\\single-version-ck-oo.csv";
 		FileReader fr = new FileReader(csvSCMFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();
@@ -38,6 +39,8 @@ public class CSVReader {
 	}
 
 	public List<CloneInfo> readCloneCSV(String csvCloneFilePath) throws IOException{
+		if(csvCloneFilePath==null)
+			return null;
 		FileReader fr = new FileReader(csvCloneFilePath);
 		BufferedReader br = new BufferedReader(fr);
 		String line=br.readLine();

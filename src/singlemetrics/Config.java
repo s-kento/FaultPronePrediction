@@ -11,7 +11,7 @@ public class Config {
 		Options options = new Options();
 		options.addOption("p","project",true,"ターゲットプロジェクト");
 		options.addOption("s","scm",false,"SCMメトリクス");
-		options.addOption("c","clone",false,"クローンメトリクス");
+		options.addOption("c","clone",true,"クローンメトリクス");
 		options.addOption("b","bug",false,"バグメトリクス");
 		options.addOption("o","output",true,"出力ファイル名");
 

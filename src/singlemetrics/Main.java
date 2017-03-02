@@ -3,22 +3,16 @@ package singlemetrics;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.ParseException;
+
 import weka.ARFF;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
-		CSVReader reader = new CSVReader();
-		List<SCMInfo> bugs = reader.readSCMCSV();
+	public static void main(String[] args) throws IOException, ParseException {
+		Config conf = new Config();
+		CommandLine cl = conf.getOptions(args);
 		ARFF arff = new ARFF();
-		if (Integer.parseInt(args[2]) == 0) {
-			arff.makeSCMARFF(bugs, args[1]);
-		}
-		else if (Integer.parseInt(args[2]) == 1){
-			List<CloneInfo> clones = reader.readCloneCSV(args[0]);
-			arff.makeCloneARFF(bugs, clones, args[1]);
-		}
-		else if(Integer.parseInt(args[2]) == 2){
-			//TODO
-		}
+		arff.addValue(cl);
 	}
 }
