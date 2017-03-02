@@ -22,7 +22,7 @@ public class ARFF {
 		if (cl.hasOption("s")) {
 			for (SCMInfo scm : scms) {
 				for (int i = 0; i < 17; i++) {
-					pw.print(scm.getMetrics()[i] + ",");
+					pw.print(scm.getMetrics()[i] + ",");//ここではバッファに入れておいて，isFaultyの手前で書き込む
 				}
 				if (cl.hasOption("c")) {
 					CloneInfo clone = searchClone(scm, clones);
