@@ -15,6 +15,7 @@ import singlemetrics.SCMInfo;
 
 public class ARFF {
 	public void addValue(CommandLine cl) throws IOException {
+		String buffer="";
 		PrintWriter pw = makeARFF(cl);
 		CSVReader reader = new CSVReader();
 		List<SCMInfo> scms = reader.readSCMCSV(cl);
@@ -22,14 +23,16 @@ public class ARFF {
 		if (cl.hasOption("s")) {
 			for (SCMInfo scm : scms) {
 				for (int i = 0; i < 17; i++) {
-					pw.print(scm.getMetrics()[i] + ",");//ここではバッファに入れておいて，isFaultyの手前で書き込む
+					buffer+=scm.getMetrics()[i]+",";
 				}
 				if (cl.hasOption("c")) {
 					CloneInfo clone = searchClone(scm, clones);
 					if (clone.getClassName() != null) {// searchCloneの結果がnullでないならば，ARFFに書き出す
 						for (Double value : clone.getMetrics()) {
-							pw.print(value + ",");
+							buffer+=value+",";
 						}
+					}else{
+						break;
 					}
 				}
 				if(cl.hasOption("b")){
