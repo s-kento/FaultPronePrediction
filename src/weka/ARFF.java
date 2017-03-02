@@ -38,6 +38,7 @@ public class ARFF {
 				if(cl.hasOption("b")){
 					//TODO
 				}
+				pw.println(buffer);
 				if (scm.isFaulty())
 					pw.println("TRUE");
 				else
