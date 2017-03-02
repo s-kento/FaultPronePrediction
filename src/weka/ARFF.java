@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import singlemetrics.SCMInfo;
 import singlemetrics.CloneInfo;
+import singlemetrics.SCMInfo;
 
 public class ARFF {
 	public void makeSCMARFF(List<SCMInfo> bugs, String output) throws IOException {
@@ -127,5 +127,6 @@ public class ARFF {
 		CloneInfo clone = new CloneInfo();
 		return clone;
 	}
+
 
 }
